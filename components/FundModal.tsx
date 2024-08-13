@@ -1,11 +1,17 @@
 import { Dispatch, FC, SetStateAction, useContext, useState } from "react";
 import { Transaction, BrowserWallet } from "@meshsdk/core";
-import type { Asset } from '@meshsdk/core';
+import type { Asset } from "@meshsdk/core";
 import { CloseIcon } from "./SvgIcons";
 import { ModalContext } from "../context/ModalProvider";
 import ClickAwayComponent from "./ClickAwayComponent";
 import { depositFund, withdrawFund } from "../utils/api";
-import { DEMO_WALLET, DUM_POLICY_ID, KONDA_POLICY_ID, NEBULA_POLICY_ID, SNEK_POLICY_ID } from "../config";
+import {
+  DEMO_WALLET,
+  DUM_POLICY_ID,
+  KONDA_POLICY_ID,
+  NEBULA_POLICY_ID,
+  SNEK_POLICY_ID,
+} from "../config";
 import { errorAlert, successAlert } from "./ToastGroup";
 import { GameContext, GameContextProps } from "../context/GameProvider";
 import { UserContext, UserContextProps } from "../context/UserProvider";
@@ -42,10 +48,11 @@ const FundModal: FC = () => {
 
           {/* fund tabs beginning */}
           <button
-            className={` text-sm px-4 py-2 rounded-t-md uppercase font-bold ${tab === "deposit"
-              ? "bg-[#732e9f] text-[#fff]"
-              : "bg-[#471368] text-[#000]"
-              }`}
+            className={` text-sm px-4 py-2 rounded-t-md uppercase font-bold ${
+              tab === "deposit"
+                ? "bg-[#732e9f] text-[#fff]"
+                : "bg-[#471368] text-[#000]"
+            }`}
             onClick={() => setTab(isFundModal)}
             disabled={isLoading}
           >
@@ -103,7 +110,7 @@ export default FundModal;
 const ActionForm = ({
   type,
   isLoading,
-  setIsLoading
+  setIsLoading,
 }: {
   type: string;
   isLoading: boolean;
@@ -116,12 +123,12 @@ const ActionForm = ({
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm();
 
   const onSubmit = async (data: any) => {
     setIsLoading(true);
-    console.log("token", token)
+    console.log("token", token);
     try {
       const values: Record<string, number> = {};
 
@@ -132,31 +139,26 @@ const ActionForm = ({
 
       if (type === "deposit" && wallet) {
         if (values.ada > 0) {
-
-          const tx = new Transaction({ initiator: wallet }).sendLovelace(
-            DEMO_WALLET,
-            (values.ada * 1000000).toString()
-          ).sendAssets(
-            DEMO_WALLET,
-            [
+          const tx = new Transaction({ initiator: wallet })
+            .sendLovelace(DEMO_WALLET, (values.ada * 1000000).toString())
+            .sendAssets(DEMO_WALLET, [
               {
                 unit: NEBULA_POLICY_ID,
-                quantity: (values.nebula * 100000000).toString()
+                quantity: values.nebula.toString(),
               },
-              {
-                unit: DUM_POLICY_ID,
-                quantity: (values.dum * 100).toString()
-              },
-              {
-                unit: KONDA_POLICY_ID,
-                quantity: (values.konda).toString()
-              },
-              {
-                unit: SNEK_POLICY_ID,
-                quantity: (values.snek).toString()
-              }
-            ]
-          );
+              // {
+              //   unit: DUM_POLICY_ID,
+              //   quantity: (values.dum * 100).toString()
+              // },
+              // {
+              //   unit: KONDA_POLICY_ID,
+              //   quantity: (values.konda).toString()
+              // },
+              // {
+              //   unit: SNEK_POLICY_ID,
+              //   quantity: (values.snek).toString()
+              // }
+            ]);
           const unsignedTx = await tx.build();
           const signedTx = await wallet.signTx(unsignedTx);
           const txHash = await wallet.submitTx(signedTx);
@@ -166,10 +168,10 @@ const ActionForm = ({
               DEMO_WALLET,
               txHash,
               values.nebula,
-              values.dum,
-              values.konda,
+              0,
+              0,
               values.ada,
-              values.snek
+              0
             );
 
             if (res == 200 || res == 504) {
@@ -179,32 +181,26 @@ const ActionForm = ({
             }
           }
         } else {
-
-
-          const tx = new Transaction({ initiator: wallet }).sendLovelace(
-            DEMO_WALLET,
-            (1 * 1000000).toString()
-          ).sendAssets(
-            DEMO_WALLET,
-            [
+          const tx = new Transaction({ initiator: wallet })
+            .sendLovelace(DEMO_WALLET, (1 * 1000000).toString())
+            .sendAssets(DEMO_WALLET, [
               {
                 unit: NEBULA_POLICY_ID,
-                quantity: (values.nebula * 100000000).toString()
+                quantity: values.nebula.toString(),
               },
-              {
-                unit: DUM_POLICY_ID,
-                quantity: (values.dum * 100).toString()
-              },
-              {
-                unit: KONDA_POLICY_ID,
-                quantity: (values.konda).toString()
-              },
-              {
-                unit: SNEK_POLICY_ID,
-                quantity: (values.snek).toString()
-              }
-            ]
-          );
+              // {
+              //   unit: DUM_POLICY_ID,
+              //   quantity: (values.dum * 100).toString()
+              // },
+              // {
+              //   unit: KONDA_POLICY_ID,
+              //   quantity: (values.konda).toString()
+              // },
+              // {
+              //   unit: SNEK_POLICY_ID,
+              //   quantity: (values.snek).toString()
+              // }
+            ]);
           const unsignedTx = await tx.build();
           const signedTx = await wallet.signTx(unsignedTx);
           const txHash = await wallet.submitTx(signedTx);
@@ -214,10 +210,10 @@ const ActionForm = ({
               DEMO_WALLET,
               txHash,
               values.nebula,
-              values.dum,
-              values.konda,
+              0,
+              0,
               values.ada,
-              values.snek
+              0
             );
 
             if (res == 200 || res == 504) {
@@ -236,10 +232,10 @@ const ActionForm = ({
         const res = await withdrawFund(
           address,
           values.nebula,
-          values.dum,
-          values.konda,
+          0,
+          0,
           values.ada,
-          values.snek
+          0
         );
         if (res == 200 || res == 504) {
           getGameBalance();
@@ -275,17 +271,17 @@ const ActionForm = ({
         </div>
         <div className="">
           <label htmlFor="nebula" className="mb-2 text-sm font-bold uppercase">
-            nebula
+            nova
           </label>
           <input
             className="p-3 value-input w-full py-0.5 text-[16px] font-bold text-white border border-yellow-300  bg-[#00000000] h-10"
             id="nebula"
-            placeholder="Input Nebula amount"
+            placeholder="Input Nova amount"
             type="number"
             {...register("nebula", { required: false })}
           />
         </div>
-        <div className="">
+        {/* <div className="">
           <label htmlFor="dum" className="mb-2 text-sm font-bold uppercase">
             dum
           </label>
@@ -320,7 +316,7 @@ const ActionForm = ({
             type="number"
             {...register("snek", { required: false })}
           />
-        </div>
+        </div> */}
       </div>
       <div className="flex gap-4 items-center">
         <button
@@ -329,18 +325,16 @@ const ActionForm = ({
           type="submit"
         >
           {isLoading ? `${type}ing...` : type}
-
         </button>
         <div className="text-[10px] mx-10">
-          Deposits may take up to 5 minutes
-          closing this window may cause for the
-          transation to cancel or malfunction
+          Deposits may take up to 5 minutes closing this window may cause for
+          the transation to cancel or malfunction
         </div>
       </div>
       <div className="mx-10 mt-4">
         <p className="text-[10px]">
-          Following the deposit or withdrawal , please wait
-          while the transaction is verified on the blockchain
+          Following the deposit or withdrawal , please wait while the
+          transaction is verified on the blockchain
         </p>
       </div>
     </form>
@@ -361,13 +355,13 @@ const BalanceList = () => {
           </span>
         </div>
         <div className="text-sm text-[#ddd] uppercase">
-          nebula:{" "}
+          nova:{" "}
           <span className="text-[#6673dc] font-black">
             {" "}
             {gameBalance.nebula?.toLocaleString()}
           </span>
         </div>
-        <div className="text-sm text-[#ddd] uppercase">
+        {/* <div className="text-sm text-[#ddd] uppercase">
           dum:{" "}
           <span className="text-[#6673dc] font-black">
             {" "}
@@ -387,7 +381,7 @@ const BalanceList = () => {
             {" "}
             {gameBalance.snek?.toLocaleString()}
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   ) : (

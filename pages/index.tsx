@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-black">
       <Head>
-        <title>Space Race</title>
+        <title>NOVA SLOTS</title>
       </Head>
       {token !== "snek" ?
         <Image
@@ -28,7 +28,7 @@ export default function Home() {
           alt=""
         />}
 
-      <Header title="Space Race" />
+      <Header title="NOVA SLOTS" />
       <SlotsContainer />
     </main>
   );

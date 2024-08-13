@@ -3,12 +3,14 @@ export const DELAY_TIME = 7000;
 // export const API_URL = "https://api.spacerace.site"
 export const API_URL = "http://localhost:5000"
 export const DEMO_WALLET =
-  "addr1v8kmayk5e3pp8dxgj63j82v3egp7wneye7d3lfvtah0uaxcld8p2q";
+  "addr1qyaw47qegp844frfq37l629d8ysegwflffnhgv4pentw3ug8hf8az2vzp94vhpqu2sv2ypyu4xmupla4jk2vpwxdtqnqh89whn";
 
 export const DUM_POLICY_ID =
   "3222adc61e7488c611d4194963eb2d6a8b7cf3c87f471620b5b2422c44554d";
+// export const NEBULA_POLICY_ID =
+// "3744d5e39333c384505214958c4ed66591a052778512e56caf420f624e4542554c41";
 export const NEBULA_POLICY_ID =
-"3744d5e39333c384505214958c4ed66591a052778512e56caf420f624e4542554c41";
+"98feb5c8619c0314ac0787bc59b0e63ad6c4232551fa35f1f735b1aa4e4f5634";
 export const KONDA_POLICY_ID =
 "501dd5d2fbab6af0a26b1421076ff3afc4d5a34d6b3f9694571116ea4b4f4e4441";
 export const SNEK_POLICY_ID =
@@ -91,17 +93,10 @@ export const config = {
 export const TOKENS = [
     {
         symbol: "ada",
+        name:"ada"
     },
     {
         symbol: "nebula",
+        name:"nova"
     },
-    {
-        symbol: "dum",
-    },
-    {
-        symbol: "konda",
-    },
-    {
-        symbol: "snek",
-    }
 ]

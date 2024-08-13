@@ -146,7 +146,7 @@ const SlotsContainer: React.FC = () => {
           }
           break;
         case "nebula":
-          if (nebula < coinValue) {
+          if (nebula < coinValue || ada <= 1) {
             errorAlert("Deposit more or Decrease bet amount");
             tempBalance = { ada, nebula, dum, konda, snek };
           } else {
@@ -608,7 +608,7 @@ const SlotsContainer: React.FC = () => {
                 balance
               </div>
               <div className="flex-col w-full items-center gap-4 max-lg:gap-2 max-md:flex-col max-sm:text-[8px]">
-                <div className="flex justify-between px-4 gap-4 max-lg:gap-2 max-sm:px-2">
+                <div className="flex justify-between px-24 gap-4 max-lg:gap-2 max-sm:px-10">
 
                   <div className="font-black uppercase text-[#fff] flex items-center gap-2 max-lg:gap-2">
                     <div className="text-sm text-center max-sm:hidden">ada:</div>
@@ -630,7 +630,7 @@ const SlotsContainer: React.FC = () => {
                     </div>
                   </div>
                   <div className="font-black uppercase text-[#fff] flex items-center gap-2 max-lg:gap-2">
-                    <div className="text-sm text-center max-sm:hidden">nebula:</div>
+                    <div className="text-sm text-center max-sm:hidden">nova:</div>
                     <div className="text-sm text-center min-[640px]:hidden">n:</div>
 
                     <div className="text-xl text-left text-[yellow] w-[100px] max-lg:text-base max-lg:w-[70px] max-[400px]:text-[12px]">
@@ -644,58 +644,6 @@ const SlotsContainer: React.FC = () => {
                       {gameResult.multiplier == 0 &&
                         isStarted &&
                         tempBalance.nebula}
-                    </div>
-                  </div>
-                  <div className="font-black uppercase text-[#fff] flex items-center gap-2 max-lg:gap-2">
-                    <div className="text-sm text-center max-sm:hidden">snek:</div>
-                    <div className="text-sm text-center min-[640px]:hidden">s:</div>
-                    <div className="text-xl text-left text-[yellow] w-[100px] max-lg:text-base max-lg:w-[70px] max-[400px]:text-[12px]">
-                      {!isStarted && gameBalance.snek}
-                      {gameResult.multiplier !== 0 &&
-                        !isSpinMoveEnd &&
-                        tempBalance.snek}
-                      {gameResult.multiplier !== 0 &&
-                        isSpinMoveEnd &&
-                        gameBalance.snek}
-                      {gameResult.multiplier == 0 &&
-                        isStarted &&
-                        tempBalance.snek}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-between px-24 gap-4 max-lg:gap-2 max-sm:px-10 ">
-                  <div className="font-black uppercase text-[#fff] flex items-center gap-2 max-lg:gap-2">
-                    <div className="text-sm text-center max-sm:hidden">konda:</div>
-                    <div className="text-sm text-center min-[640px]:hidden">k:</div>
-
-                    <div className="text-xl text-left text-[yellow] w-[100px] max-lg:text-base max-lg:w-[70px] max-[400px]:text-[12px]">
-                      {!isStarted && gameBalance.konda}
-                      {gameResult.multiplier !== 0 &&
-                        !isSpinMoveEnd &&
-                        tempBalance.konda}
-                      {gameResult.multiplier !== 0 &&
-                        isSpinMoveEnd &&
-                        gameBalance.konda}
-                      {gameResult.multiplier == 0 &&
-                        isStarted &&
-                        tempBalance.konda}
-                    </div>
-                  </div>
-
-                  <div className="font-black uppercase text-[#fff] flex items-center gap-2 max-lg:gap-2">
-                    <div className="text-sm text-center max-sm:hidden">dum:</div>
-                    <div className="text-sm text-center min-[640px]:hidden">d:</div>
-                    <div className="text-xl text-left text-[yellow] w-[100px] max-lg:text-base max-lg:w-[70px] max-[400px]:text-[12px]">
-                      {!isStarted && gameBalance.dum}
-                      {gameResult.multiplier !== 0 &&
-                        !isSpinMoveEnd &&
-                        tempBalance.dum}
-                      {gameResult.multiplier !== 0 &&
-                        isSpinMoveEnd &&
-                        gameBalance.dum}
-                      {gameResult.multiplier == 0 &&
-                        isStarted &&
-                        tempBalance.dum}
                     </div>
                   </div>
                 </div>
@@ -769,7 +717,7 @@ const SlotsContainer: React.FC = () => {
                   !connected ||
                   (token === "ada" && gameBalance.ada < 3) ||
                   (token === "dum" && gameBalance.dum <= 100) ||
-                  (token === "nebula" && gameBalance.nebula <= 5000)
+                  (token === "nebula" && gameBalance.nebula <= 1000)
                   || (token === "konda" && gameBalance.konda <= 10000) || (token === "snek" && gameBalance.snek <= 5000)
                 }
               >

@@ -12,7 +12,7 @@ const TokenDropdown = () => {
       title="Active Token"
     >
       <label className="flex items-center text-xl  max-lg:text-lg max-sm:text-md">
-        {token} <DownArrow className="group-hover:rotate-180" />
+        {TOKENS.filter((item)=>item.symbol == token)[0].name} <DownArrow className="group-hover:rotate-180" />
       </label>
       <div className="uppercase bg-[#431043] rounded-md absolute top-[28px] overflow-hidden invisible group-hover:visible">
         <ul className="flex flex-col">
@@ -24,7 +24,7 @@ const TokenDropdown = () => {
               onClick={() => setToken(item.symbol)}
               key={key}
             >
-              {`${item.symbol}`}
+              {`${item.name}`}
             </li>
           ))}
         </ul>

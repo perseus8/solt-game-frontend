@@ -1,7 +1,8 @@
 export const SPIN_TIME = 13000;
 export const DELAY_TIME = 7000;
 // export const API_URL = "https://api.spacerace.site"
-export const API_URL = "http://localhost:5000"
+// export const API_URL = "http://localhost:5000"
+export const API_URL = "https://api.dejun.io"
 export const DEMO_WALLET =
   "addr1qyaw47qegp844frfq37l629d8ysegwflffnhgv4pentw3ug8hf8az2vzp94vhpqu2sv2ypyu4xmupla4jk2vpwxdtqnqh89whn";
 

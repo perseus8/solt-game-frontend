@@ -50,39 +50,12 @@ const GameFee: FC<GameFeeProps> = ({ isOpen, onClose }) => {
                                 </tr>
                                 <tr className="border-b border-[#ffffff65] ">
                                     <td className="text-left pl-10 border-b border-[#ffffff65] py-6">
-                                        NEBULA
+                                        NOVA
                                     </td>
                                     <td className="text-left pl-10 border-b border-[#ffffff65]">
                                         1 ada
                                     </td>
-                                    <td className="text-left pl-10 border-b border-[#ffffff65]">1 k nebula - <br />100 k nebula</td>
-                                </tr>
-                                <tr className="border-b border-[#ffffff65] ">
-                                    <td className="text-left pl-10 border-b border-[#ffffff65] py-6">
-                                        D.U.M
-                                    </td>
-                                    <td className="text-left pl-10 border-b border-[#ffffff65]">
-                                        2 ada
-                                    </td>
-                                    <td className="text-left pl-10 border-b border-[#ffffff65]">100 d.u.m - <br />25k d.u.m</td>
-                                </tr>
-                                <tr className="border-b border-[#ffffff65] ">
-                                    <td className="text-left pl-10 border-b border-[#ffffff65] py-6">
-                                        KONDA
-                                    </td>
-                                    <td className="text-left pl-10 border-b border-[#ffffff65]">
-                                        2 ada
-                                    </td>
-                                    <td className="text-left pl-10 border-b border-[#ffffff65]">10 k konda - <br />500 k konda</td>
-                                </tr>
-                                <tr className=" ">
-                                    <td className="text-left pl-10  py-6">
-                                        SNEK
-                                    </td>
-                                    <td className="text-left pl-10 ">
-                                        1000 Snek
-                                    </td>
-                                    <td className="text-left pl-10 ">5 k snek - <br />1M snek</td>
+                                    <td className="text-left pl-10 border-b border-[#ffffff65]">1 k nova - <br />100 k nova</td>
                                 </tr>
                             </tbody>
                         </table>

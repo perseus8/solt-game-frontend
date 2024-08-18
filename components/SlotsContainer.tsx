@@ -120,7 +120,7 @@ const SlotsContainer: React.FC = () => {
 
       switch (token) {
         case "ada":
-          if (ada < coinValue) {
+          if (ada - 1 < coinValue) {
             errorAlert("Deposit more or Decrease bet amount");
             tempBalance = { ada, nebula, dum, konda, snek };
           } else {

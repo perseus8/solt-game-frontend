@@ -27,10 +27,10 @@ const Header: React.FC<HeaderProps> = () => {
       <div className="container mx-auto max-w-[1200px]">
         <div className="flex justify-between py-6 max-md:flex-col max-md:items-center">
           <div className="hue-rotate  pl-10 pb-5 z-50 flex space-x-3 items-center max-[440px]:pl-4">
-            <a href="https://thenebula.org" target="_blank">
+            <a href="https://novalab.app" target="_blank">
               <Image src={bottomLogo} width={150} height={150} />
             </a>
-            <a href="https://thenebula.org" target="_blank">
+            <a href="https://novalab.app" target="_blank">
               <p className="text-5xl text-white max-[440px]:hidden">
                 {" "}
                 Nova Slots
